@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-sm-4 col-lg-12">  
               {% thumbnail  noticias_destacada.imagen "300x200" crop="center" as im %}
-                <img src="{{ im.url }}" alt = "" class="img-responsive img-thumbnail pull-left img-margin-right">
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}>
               {% empty %}              
                 <img src="http://placehold.it/300x200" alt="" class="img-thumbnail">
               {% endthumbnail %}
