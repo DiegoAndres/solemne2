@@ -2,5 +2,5 @@
 
 ## Integrantes
 
-Manuel Lizama__
+Manuel Lizama  
 Diego Pérez
