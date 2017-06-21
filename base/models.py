@@ -24,8 +24,8 @@ class Noticia(models.Model):
     imagen    = ImageField(upload_to = 'imagenes/' )
     categoria = models.ForeignKey( Categoria, verbose_name = u'categoria' )
     destacada = models.BooleanField(default = False)
-    fecha_publicacion  = models.DateTimeField( auto_now = True )
-    fecha_creacion     = models.DateTimeField( auto_now_add = True )
+    fecha_publicacion  = models.DateTimeField( auto_now_add = True )
+    fecha_modificacion = models.DateTimeField( auto_now = True )
 
     def __unicode__( self ):
         return self.titulo
