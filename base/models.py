@@ -2,13 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
-
-class Noticia(models.Model):
-    """
-        Modelo Noticia
-    """
-    titulo    = models.CharField( max_length = 100, verbose_name = u'titulo', help_text = "Titulo Noticia" )
+from sorl.thumbnail import ImageField
 
 
 class Categoria(models.Model):
@@ -17,10 +11,21 @@ class Categoria(models.Model):
     """
     nombre    = models.CharField( max_length = 100, verbose_name = u'Nombre', help_text = "Nombre Categoria" )
 
+    def __unicode__( self ):
+        return self.nombre
 
-class Publicacion(models.Model):
+
+class Noticia(models.Model):
     """
         Modelo Noticia
     """
-    noticia      = models.ForeignKey( Noticia, verbose_name = u'jerarquía' )
-    creada       = models.DateTimeField( auto_now = True )
+    titulo    = models.CharField( max_length = 100, verbose_name = u'titulo', help_text = "Titulo Noticia" )
+    contenido = models.CharField( max_length = 1000, verbose_name = u'contenido', help_text = "Contenido" )
+    imagen    = ImageField(upload_to = 'imagenes/' )
+    categoria = models.ForeignKey( Categoria, verbose_name = u'categoria' )
+    destacada = models.BooleanField(default = False)
+    fecha_publicacion  = models.DateTimeField( auto_now_add = True )
+    fecha_publicacion  = models.DateTimeField( auto_now_add = True )
+
+    def __unicode__( self ):
+        return self.titulo

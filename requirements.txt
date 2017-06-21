@@ -3,3 +3,5 @@ django-autofixture==0.12.1
 django-bootstrap-form==3.2.1
 django-bootstrap3
 pytz==2017.2
+pillow
+sorl-thumbnail

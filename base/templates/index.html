@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block content %}   
+{% block content %}
   <div class="container">
     <div class="col-lg-9 col-sm-12">
       <div class="well row">
@@ -16,44 +16,20 @@
               <img src="http://placehold.it/300x200" alt="" class="img-thumbnail">
             </div>
             <div class="col-sm-8 col-lg-12">            
-              <h4>Lorem ipsum dolor sit amet</h4>
-              <p class="text-justify">Consectetur adipisicing elit. Nisi molestias voluptatum vitae debitis voluptatibus magni perspiciatis voluptate laboriosam, totam reiciendis? Facere accusamus delectus fuga ipsum veritatis consectetur excepturi magni omnis.</p>
+              <h4>{{noticias_destacada.titulo}}</h4>
+              <p class="text-justify">{{noticias_destacada.contenido}}</p>
             </div>
           </div>
         </div>
         <div class="col-lg-8">
           <div class="row">
+          {% for noticia in noticias %}
             <div class="col-xs-6 col-sm-4">
               <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Consectetur adipisicing elit. </a></p>
-              <p><span class="label label-info">Noticias</span></p>
+              <p><a href="{% url 'detalle' id=noticia.id %}">{{noticia.titulo}}</a></p>
+              <p><span class="label label-info">{{noticia.categoria.nombre}}</span></p>
             </div>
-            <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Nisi molestias voluptatum vitae </a></p>
-              <p><span class="label label-info">Educación</span></p>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Voluptatum vitae debitis voluptatibus</a></p>
-              <p><span class="label label-info">Noticias</span></p>
-            </div>              
-
-            <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Molestias voluptatum vitae debitis</a></p>
-              <p><span class="label label-info">Educación</span></p>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Nisi molestias voluptatum</a></p>
-              <p><span class="label label-info">Educación</span></p>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
-              <p><a href="noticia_detalle.html">Voluptatibus consectetur adipisicing elit</a></p>
-              <p><span class="label label-info">Educación</span></p>
-            </div>              
+          {% endfor%}
           </div>
         </div>
       </div>
