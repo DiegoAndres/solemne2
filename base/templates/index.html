@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block content %}
   <div class="container">
     <div class="col-lg-9 col-sm-12">
@@ -12,8 +13,12 @@
       <div class="row">
         <div class="col-lg-4 aside">
           <div class="row">
-            <div class="col-sm-4 col-lg-12">                
-              <img src="http://placehold.it/300x200" alt="" class="img-thumbnail">
+            <div class="col-sm-4 col-lg-12">  
+              {% thumbnail  noticias_destacada.imagen "300x200" crop="center" as im %}
+                <img src="{{ im.url }}" alt = "" class="img-responsive img-thumbnail pull-left img-margin-right">
+              {% empty %}              
+                <img src="http://placehold.it/300x200" alt="" class="img-thumbnail">
+              {% endthumbnail %}
             </div>
             <div class="col-sm-8 col-lg-12">            
               <h4>{{noticias_destacada.titulo}}</h4>
@@ -25,7 +30,11 @@
           <div class="row">
           {% for noticia in noticias %}
             <div class="col-xs-6 col-sm-4">
-              <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
+              {% thumbnail  noticia.imagen "500x300" crop="center" as im %}
+                <img src="{{ im.url }}" alt = "" class="img-responsive img-thumbnail pull-left img-margin-right">
+              {% empty %}
+                <img src="http://placehold.it/500x300" alt="" class="img-responsive img-thumbnail">
+              {% endthumbnail %}
               <p><a href="{% url 'detalle' id=noticia.id %}">{{noticia.titulo}}</a></p>
               <p><span class="label label-info">{{noticia.categoria.nombre}}</span></p>
             </div>

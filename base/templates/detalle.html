@@ -7,9 +7,11 @@
         <h1>{{noticia.titulo}}<small> {{noticia.categoria.nombre}}</small></h1>
         <p><em>Fecha publicación: {{noticia.fecha_publicacion}}</em></p>
         {% thumbnail  noticia.imagen "200x200" crop="center" as im %}
-            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            <img src="{{ im.url }}" alt = "" class="img-responsive img-thumbnail pull-left img-margin-right">
+        {% empty %}
+            <img src="http://placehold.it/200x200" alt="" class="img-responsive img-thumbnail">
         {% endthumbnail %}
-        <!-- <img src="http://placehold.it/200x200" alt="" class="img-responsive img-thumbnail pull-left img-margin-right"> -->
+        <!-- <img src="{{noticia.imagen.url}}" alt="" class="img-responsive img-thumbnail pull-left img-margin-right"> -->
         <p>{{noticia.contenido}}</p>   
       </div>
 </div>
